@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Profesor extends Model
 {
@@ -16,6 +17,6 @@ class Profesor extends Model
     protected $guarded = ['_token'];
 
     public function asignatura () : BelongsTo {
-        return $this->belongsTo(Asinatura::class, 'id_asignatura');
+        return $this->belongsTo(Asignatura::class, 'id_asignatura');
     }
 }
