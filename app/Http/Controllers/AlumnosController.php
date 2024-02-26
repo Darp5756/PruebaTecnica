@@ -13,7 +13,7 @@ class AlumnosController extends Controller
     }
 
     public function buscar ($id) {
-        return Alumno::find($id);
+        return Alumno::select(['nombre', 'apellido', 'cedula', 'nacimiento', 'edad'])->find($id);
     }
 
     public function crear (Request $request) {
@@ -28,7 +28,7 @@ class AlumnosController extends Controller
             Alumno::create($request->all());
         } catch (QueryException $e) {
             $e->getBindings();
-        } 
+        }
     }
 
     public function modificar (Request $request, $id) {
@@ -44,7 +44,7 @@ class AlumnosController extends Controller
             $alumno->update($request->all());
         } catch (QueryException $e) {
             $e->getBindings();
-        }    
+        }
     }
 
     public function eliminar ($id) {
@@ -53,6 +53,6 @@ class AlumnosController extends Controller
             $alumno->delete();
         } catch (QueryException $e) {
             $e->getBindings();
-        } 
-    }   
+        }
+    }
 }
